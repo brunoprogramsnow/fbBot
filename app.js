@@ -15,7 +15,7 @@ app.get("/", function (req, res){
 
 //facebook webhook for verification 
 app.get("/webhook", function (req,res){
-	if (req.query["hub.verify_token"] === "sagesurebot") {
+	if (req.query["hub.verify_token"] === process.env.VERIFICATION_TOKEN) {
 		console.log('verified the webhook'); 
 		res.status(200).send(req.query["hub.challenge"]); 
 	} else {
